@@ -56,4 +56,5 @@ dependencies {
     compile 'cn.youngkaaa:yviewpager:0.4'
     compile 'q.rorbin:VerticalTabLayout:1.2.5'
     compile 'com.alibaba:easyexcel:1.0.0-RELEASE'
+    compile 'cn.zhouchaoyuan:excelpanel:1.0.4'
 }

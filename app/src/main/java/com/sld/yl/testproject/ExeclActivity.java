@@ -36,7 +36,6 @@ public class ExeclActivity extends AppCompatActivity {
         try {
             // 解析每行结果在listener中处理
             ExcelListener listener = new ExcelListener();
-
             ExcelReader excelReader = new ExcelReader(inputStream, ExcelTypeEnum.XLS, null, listener);
             excelReader.read();
             List<Object> datas = listener.getDatas();
