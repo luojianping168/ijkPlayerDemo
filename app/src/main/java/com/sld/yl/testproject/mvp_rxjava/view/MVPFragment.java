@@ -20,6 +20,7 @@ public class MVPFragment extends Fragment implements TasksContract.View {
     private String mParam1;
     private String mParam2;
     private TasksContract.Presenter mPresenter;
+    private boolean mIsActive;
 
 
     public MVPFragment() {
@@ -48,9 +49,9 @@ public class MVPFragment extends Fragment implements TasksContract.View {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        mIsActive = true;
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_mv, container, false);
-
         view.findViewById(R.id.click_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,7 +80,19 @@ public class MVPFragment extends Fragment implements TasksContract.View {
     }
 
     @Override
+    public boolean isActive() {
+        return mIsActive;
+    }
+
+    @Override
     public void showDiaglog() {
         new AlertDialog.Builder(getActivity()).setTitle("mvp测试").setMessage("回调成功了").show();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mPresenter.detachView();
+        mIsActive = false;
     }
 }

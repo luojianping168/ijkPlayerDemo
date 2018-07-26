@@ -41,7 +41,6 @@ public class DialogActivity extends AppCompatActivity {
        /* mDialogFragment = PlayerDialog.newInstance("", "");
         mDialogFragment.show(getSupportFragmentManager(),"PlayerDialog");*/
         // startActivity(new Intent(this,URLPlayerActivity.class));
-
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         if (fragmentLayout.getVisibility() == View.GONE) {
             fragmentLayout.setVisibility(View.VISIBLE);

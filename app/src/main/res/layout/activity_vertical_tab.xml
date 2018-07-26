@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".VerticalTabActivity">
+
+    <q.rorbin.verticaltablayout.VerticalTabLayout
+        android:id="@+id/vertical_TabLayout"
+        android:layout_width="@dimen/normal_300dp"
+        android:layout_height="match_parent"
+        android:background="#0D2330"
+        app:indicator_color="#01818D"
+        app:indicator_gravity="fill"
+        app:indicator_corners="@dimen/normal_10dp"
+        app:tab_height="50dp"
+        app:tab_mode="fixed" />
+
+   <!-- <me.kaelaela.verticalviewpager.VerticalViewPager
+        android:id="@+id/vertical_viewpage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+         />-->
+</LinearLayout>

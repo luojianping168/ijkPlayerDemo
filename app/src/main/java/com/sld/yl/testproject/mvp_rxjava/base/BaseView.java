@@ -17,7 +17,7 @@
 package com.sld.yl.testproject.mvp_rxjava.base;
 
 public interface BaseView<T> {
-
+    boolean isActive();
     void setPresenter(T presenter);
 
 }

@@ -22,4 +22,7 @@ public interface BasePresenter {
 
     void unsubscribe();
 
+    void detachView();
+    boolean isViewActive();
+
 }

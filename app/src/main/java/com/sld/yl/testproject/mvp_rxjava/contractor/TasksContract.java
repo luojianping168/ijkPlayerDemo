@@ -30,14 +30,12 @@ import java.util.List;
 public interface TasksContract {
 
     interface View extends BaseView<Presenter> {
-
-   void showDiaglog();
+        void showDiaglog();
 
     }
 
     interface Presenter extends BasePresenter {
-
-   void showDialog();
+        void showDialog();
 
 
     }

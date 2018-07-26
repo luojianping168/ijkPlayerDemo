@@ -22,6 +22,8 @@ import android.support.v7.app.AlertDialog;
 import com.sld.yl.testproject.mvp_rxjava.contractor.TasksContract;
 import com.sld.yl.testproject.mvp_rxjava.schedulers.BaseSchedulerProvider;
 
+import java.lang.ref.WeakReference;
+
 import io.reactivex.disposables.CompositeDisposable;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -45,11 +47,13 @@ public class MyPresenter implements TasksContract.Presenter {
 
     @NonNull
     private CompositeDisposable mCompositeDisposable;
+    private WeakReference<TasksContract.View> mViewWeakReference;
 
     public MyPresenter(/*@NonNull TasksRepository tasksRepository,*///moudle层绑定
                                                                     @NonNull TasksContract.View tasksView,
                                                                     @NonNull BaseSchedulerProvider schedulerProvider) {
         //  mTasksRepository = checkNotNull(tasksRepository, "tasksRepository cannot be null");
+        mViewWeakReference = new WeakReference<>(tasksView);
         mTasksView = checkNotNull(tasksView, "tasksView cannot be null!");
         mSchedulerProvider = checkNotNull(schedulerProvider, "schedulerProvider cannot be null");
 
@@ -57,6 +61,18 @@ public class MyPresenter implements TasksContract.Presenter {
         mTasksView.setPresenter(this);
     }
 
+    @Override
+    public boolean isViewActive() {
+        return mViewWeakReference != null && mViewWeakReference.get().isActive();
+    }
+
+    @Override
+    public void detachView() {
+        if (mViewWeakReference != null) {
+            mViewWeakReference.clear();
+            mViewWeakReference = null;
+        }
+    }
 
     @Override
     public void subscribe() {
